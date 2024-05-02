@@ -1,22 +1,35 @@
 import React from 'react'
 import axios from "axios"
 import { useState } from "react"
+import Modal from "./library/Modal";
+
 
 function Newsletter() {
     const [email, setEmail] = useState("");
 
+    const openModal = () => {
+        document.getElementById('my_modal_2').showModal()
+    }
+
     const handleEmail = async (e) => {
         e.preventDefault();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (emailRegex.test(email)) {
+            document.getElementById('my_modal_2').showModal()
+        } 
 
         try {
             const response = await axios.post("http://localhost:3000/newsletter", { email });
             console.log(response.data);
             
-            window.location.reload()
-            window.alert("Registrace proběhla úspěšně!")
+            
+            
+           
         } catch (error) {
             console.error("Error v emailu:", error)
         }
+       
     }
 
   return (
@@ -40,7 +53,9 @@ function Newsletter() {
                     type="submit"
                     className="bg-[#00df9a] w-[200px] rounded-md ml-4 font-medium my-6 py-3 text-black hover:text-[#00df9a] hover:bg-gray-700">REGISTROVAT</button>
                 </form>
-               <p>Registrací k newsletteru souhlasíte s <span className="text-violet-400 hover:text-violet-600 cursor-pointer">obchodními podmínkami</span>.</p>
+               <p className="relative">Registrací souhlasíte s <span className="text-violet-400 hover:text-violet-600 cursor-pointer tooltip tooltip-bottom tooltip-secondary " data-tip="Obchodní podmínky naleznete v příloze e-mailu" >obchodními podmínkami</span>.</p>
+             
+               <Modal email={email}/>
             </div>
 
         </div>

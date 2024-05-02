@@ -68,12 +68,12 @@ function Starwarscard() {
              <h2 className="text-2xl font-bold text-center py-8">Infokarta</h2>
             <p className="text-center text-2xl font-bold">IPv4: <span className="text-violet-600">{ip}</span> </p>
             <div className="text-center font-medium">
-                <p className="py-2 border-b mx-8 mt-8">IPv6: <span className="text-violet-500">{ipv6}</span> : </p>
+                <p className="py-2 border-b mx-8 mt-8">IPv6: <span className="text-violet-500">{ipv6}</span></p>
                 <p className="py-2 border-b mx-8"><span className="font-bold">Aktuální čas:</span> {currentTime.toLocaleTimeString('en-GB', { hour12: false })} </p>
                 
                 <p className="py-2 border-b mx-8">{formattedDate}</p>    
             </div>
-            <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black">Generovat</button>
+            <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black">Hash generátor</button>
             </div>
   )
 }

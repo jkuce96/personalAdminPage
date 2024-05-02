@@ -26,10 +26,7 @@ function Login( {isLoggedIn} ) {
     <div>
         <Navbar />
         {isLoggedIn ? <Logoutcard /> : <Logincard />}
-        
-        
-        {/* <h1 className="text-white">Login</h1> */}
-        <Footer />
+       <Footer />
     </div>
   )
 }

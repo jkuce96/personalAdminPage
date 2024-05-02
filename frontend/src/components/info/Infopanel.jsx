@@ -37,7 +37,7 @@ const Infopanel = () => {
 
   return (
     <div className="w-full py-[10rem] px-4 bg-white">
-        <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
+        <div className="max-w-[1240px] mx-auto grid lg:grid-cols-3 gap-8">
             {/* <div className="w-full shadow-xl flex flex-col py-4 my-4 rounded-lg hover:scale-105  duration-300">
               
              <h2 className="text-2xl font-bold text-center py-8">Jeden uživatel</h2>
