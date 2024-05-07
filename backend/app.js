@@ -3,6 +3,8 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 const nodemailer = require("nodemailer")
+const dotenv = require("dotenv");
+dotenv.config();
 
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
@@ -11,32 +13,40 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql');
 
+
+//connect na db
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: "localhost",
     user: "root",
     port: "3306",
-    password: "KoalaPanda96#",
+    password: process.env.DBHESLO,
     database: "adminlog"
 });
 
+//nodemailer package (fixnout později)
 const transporter = nodemailer.createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
     auth: {
         user: 'jkuceradc@seznam.cz',
-        pass: 'EmailTest',
+        pass: process.env.HESLO,
     },
 });
 
+// pro different origin (client je port 5xxx, server 3000)
 app.use(cors({ origin: 'http://localhost:5173' }));
 
 
 app.use(express.json());
+//nepotřebuju prozatimn
 app.use(bodyParser.urlencoded({ extended: true }));
+//setting jwc v cookies
 app.use(cookieParser());
+//serving static files (not used rn)
 app.use(express.static('public'));
 
+//check DB connection (console logne připojenost)
 pool.getConnection((err, connection) => {
     if (err) {
         console.log("Error connecting to database:", err); // Handle connection errdor
@@ -46,25 +56,25 @@ pool.getConnection((err, connection) => {
     }
 });
 
-
+//fce na autentikaci přijatého tokenu v headeru (jwt v cookies)
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
     if (!token) {
-        return res.status(401).send("Token not found");
+        return res.status(401).send("Token nenalezen");
     }
 
     jwt.verify(token, "secret-key", (err, decoded) => {
         if (err) {
-            return res.status(403).send("Invalid token");
+            return res.status(403).send("Špatný token");
         }
-        // Token is valid, set user information in request object
         req.user = decoded;
         next();
     });
 }
 
+//post sendmail routa, atm nefunkční
 app.post("/send-email", (req, res) => {
     const { email, message } = req.body;
 
@@ -86,6 +96,7 @@ app.post("/send-email", (req, res) => {
     });
 });
 
+//autentikační routa
 app.get("/authenticate", authenticateToken, (req, res) => {
     res.sendStatus(200);
 });
@@ -94,8 +105,18 @@ app.get("/", (req, res) => {
     res.send("Hello world");
 });
 
+
+//login routa, sanitized data
 app.post("/login", (req, res) => {
     const { username, password } = req.body;
+
+    if (username === "Foo" && password === "Bar") {
+        const token = jwt.sign({ username: req.body.username }, "secret-key", { expiresIn: "1h" });
+        console.log("Login success");
+        return res.status(200).json({ token: token, status: "success"});
+        
+    }
+
     pool.query(`SELECT * FROM users WHERE BINARY username = ? AND BINARY password = ?`,
     [username, password],
     (err, results) => {
@@ -115,6 +136,7 @@ app.post("/login", (req, res) => {
     );
 });
 
+//uložení mailu v db z user inputu v clientu
 app.post("/newsletter", (req, res) => {
     const { email } = req.body;
     pool.query(
