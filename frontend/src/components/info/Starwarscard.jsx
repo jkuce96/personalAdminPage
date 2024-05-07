@@ -1,12 +1,23 @@
+//IPV4 vs IPV6 component 
+//2scared2rename
+
 import React from 'react'
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Hashcard from "./Hashcard";
 
 function Starwarscard() {
     const [ip, setIp] = useState("");
     const [ipv6, setIpv6] = useState("");
     const [currentTime, setCurrentTime] = useState(new Date());
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [hashCard, setHashCard] = useState();
+
+    //zobrazit tooltip
+    const zobrazitKartu = () => {
+      setHashCard(!hashCard);
+    };
+    //fetchnout data od uživatele o IPv4 
     const IPdata = async () => {
         try {
             const response = await axios.get("https://api.ipify.org/?format=json");
@@ -15,10 +26,11 @@ function Starwarscard() {
             console.error("Error v IPV4:", error)
         }
     }
+    //fetch za render
     useEffect(() => {
         IPdata();
     }, [])
-
+    //fetch dat o ipv6
     const IPv6data = async () => {
         try {
             const response = await axios.get("https://api64.ipify.org/?format=json");
@@ -27,10 +39,11 @@ function Starwarscard() {
             console.error("Error v IPV6:", error)
         }
     }
+    //fetch za render
     useEffect(() => {
         IPv6data();
     }, [])
-
+    //aktuální čas za render
     useEffect(() => {
         const timerID = setInterval(() => tick(), 1000);
     
@@ -52,7 +65,7 @@ function Starwarscard() {
           clearInterval(intervalID);
         };
       }, []);
-    
+    //formát na evropskej D/M/R
       const europeanDateFormatOptions = {
         day: 'numeric',
         month: 'numeric',
@@ -73,7 +86,12 @@ function Starwarscard() {
                 
                 <p className="py-2 border-b mx-8">{formattedDate}</p>    
             </div>
-            <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black">Hash generátor</button>
+            <button onClick={zobrazitKartu} className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black relative">IPv4 vs IPv6?
+            {hashCard && <Hashcard />}
+             
+            </button>
+           
+            
             </div>
   )
 }

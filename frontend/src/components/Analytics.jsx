@@ -1,3 +1,5 @@
+//3 page slider 
+
 import React from 'react'
 import Laptop from "../assets/laptop.jpg"
 import { useState } from "react"
@@ -20,6 +22,7 @@ function Analytics() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  //iterovani pres current vs prev index 
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -35,16 +38,28 @@ function Analytics() {
   return (
     <div className="w-full bg-white py-16 px-4">
       <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
-        <img className="w-[500px] mx-auto my-4" src={Laptop} alt="" />
+
+        <img className="w-[500px] mx-auto my-4" src={Laptop} alt="randomObrazek" />
+
         <div className="flex flex-col justify-center">
+
           <p className="text-violet-600 font-bold">RANDOM 3 PAGE SLIDER</p>
+
           <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold py-2">{texts[currentIndex].title}</h1>
+
           <p className="">{texts[currentIndex].obsah}</p>
-          <div className="button flex md:flex-row md:gap-4 ">
-            <button onClick={handlePrevious} className="bg-violet-500 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white  hover:bg-violet-700">PŘEDCHOZÍ</button>
-            <button onClick={handleNext} className="bg-violet-500 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white hover:bg-violet-700">DALŠÍ</button>
-          </div>
+
+            <div className="button flex md:flex-row md:gap-4 ">
+
+              <button onClick={handlePrevious} className="bg-violet-500 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white  hover:bg-violet-700">PŘEDCHOZÍ
+              </button>
+              
+              <button onClick={handleNext} className="bg-violet-500 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white hover:bg-violet-700">DALŠÍ
+              </button>
+
+            </div>
         </div>
+
       </div>
     </div>
   )

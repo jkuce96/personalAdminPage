@@ -22,11 +22,12 @@ function Hero() {
                 />
                 
             </div>
-            {/* <p className="md:text-2xl text-xl font-bold text-gray-400">Toto je pravda, ale David Černý takový není, nikdy nebyl a snad nikdy nebude.</p> */}
+            {/* <p className="md:text-2xl text-xl font-bold text-gray-400">Random test text.</p> */}
             <Link to="/info">
-            <button className="bg-violet-500 hover:bg-violet-800 w-[200px] rounded-md font-bold text-xl my-6 mx-auto py-3 hover:text-yellow-100 text-white">Informace</button>
+            <button className="bg-violet-500 hover:bg-violet-800 w-[200px] rounded-md font-bold text-xl my-6 mx-auto py-3 hover:text-yellow-100 text-white">Zobrazit více</button>
             </Link>
             </div>
+            
     </div>
   )
 }

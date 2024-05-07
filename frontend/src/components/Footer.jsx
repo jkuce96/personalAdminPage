@@ -13,10 +13,10 @@ function Footer() {
             <h1 className="w-full text-3xl font-bold text-violet-500">Est. 1996</h1>
             <p className="py-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum mollitia dolorem alias suscipit quod dolore hic nisi delectus obcaecati tempore!</p>
             <div className="flex justify-between md:w-[75%] my-6">
-                <FaFacebookSquare size={30}/>
-                <FaInstagramSquare size={30}/>
-                <FaTwitterSquare size={30}/>
-                <FaGithubSquare size={30}/>
+                <FaFacebookSquare className="cursor-pointer" size={30}/>
+                <FaInstagramSquare className="cursor-pointer" size={30}/>
+                <FaTwitterSquare className="cursor-pointer" size={30}/>
+                <FaGithubSquare className="cursor-pointer" size={30}/>
                 
             </div>
         </div>
@@ -26,36 +26,36 @@ function Footer() {
                 <div>
                     <h6 className="font-medium text-gray-400">Frontend</h6>
                     <ul>
-                        <li className="py-2 text-sm">React.js</li>
-                        <li className="py-2 text-sm">HTML + CSS</li>
-                        <li className="py-2 text-sm">Tailwind</li>
-                        <li className="py-2 text-sm">Vanilla JS</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">React.js</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">HTML + CSS</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Tailwind</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Vanilla JS</li>
                     </ul>
                 </div>
                 <div>
                     <h6 className="font-medium text-gray-400">Backend</h6>
                     <ul>
-                        <li className="py-2 text-sm">Express.js</li>
-                        <li className="py-2 text-sm">MySQL / PostgreSQL</li>
-                        <li className="py-2 text-sm">GraphQL</li>
-                        <li className="py-2 text-sm">JWT + auth</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Express.js</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">MySQL / PostgreSQL</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">GraphQL</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">JWT + auth</li>
                     </ul>
                 </div>
                 <div>
                     <h6 className="font-medium text-gray-400">Networking</h6>
                     <ul>
-                        <li className="py-2 text-sm">CS50</li>
-                        <li className="py-2 text-sm">Hosting / DNS</li>
-                        <li className="py-2 text-sm">Marketing</li>
-                        <li className="py-2 text-sm">Mailing</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">CS50</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Hosting / DNS</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Marketing</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Mailing</li>
                     </ul>
                 </div>
                 <div>
                     <h6 className="font-medium text-gray-400">A liiittle</h6>
                     <ul>
-                        <li className="py-2 text-sm">Nest.js</li>
-                        <li className="py-2 text-sm">Svelte</li>
-                        <li className="py-2 text-sm">C / Go</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Nest.js</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">Svelte</li>
+                        <li className="py-2 text-sm hover:underline cursor-pointer">C / Go</li>
 
                     </ul>
                 </div>

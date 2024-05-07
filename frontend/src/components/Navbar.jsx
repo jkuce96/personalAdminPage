@@ -20,8 +20,8 @@ const Navbar = () => {
         <ul className="hidden md:flex">
             <li className="p-4"><Link to="/">HOME</Link></li>
             <li className="p-4"><Link to="/bitcoin">BITCOIN</Link></li>
-            <li className="p-4">ZDROJE</li>
-            <li className="p-4"><Link to="/info">INFO</Link></li>
+            <li className="p-4">(TBD)</li>
+            <li className="p-4"><Link to="/info">FETCH</Link></li>
             <li className="p-4"><Link to="/login">LOG</Link></li>
         </ul>
         <div onClick={handleNav} className="block md:hidden cursor-pointer">
@@ -34,7 +34,7 @@ const Navbar = () => {
             <li className="p-4 border-b border-gray-600"><Link to="/">HOME</Link></li>
             <li className="p-4 border-b border-gray-600"><Link to="/bitcoin">BITCOIN</Link></li>
             <li className="p-4 border-b border-gray-600"><Link to="/info">ZDROJE</Link></li>
-            <li className="p-4 border-b border-gray-600"><Link to="/info">INFO</Link></li>
+            <li className="p-4 border-b border-gray-600"><Link to="/info">FETCH</Link></li>
             <li className="p-4"><Link to="/login">LOG</Link></li>
             </ul>
         </div>

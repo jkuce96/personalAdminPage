@@ -5,7 +5,7 @@ import Analytics from "../components/Analytics"
 import Newsletter from "../components/Newsletter"
 import Cards from "../components/Cards"
 import Footer from "../components/Footer"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 export default function Homepage() {
   useEffect(() => {

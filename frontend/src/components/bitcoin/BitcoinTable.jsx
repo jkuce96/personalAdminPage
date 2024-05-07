@@ -1,3 +1,6 @@
+//crypto fetch coingecko api
+
+
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -5,6 +8,7 @@ import { ReactTyped } from "react-typed";
 import axios from 'axios';
 import Ethereum from "../../assets/eth.png"
 import Bitcoin from "../../assets/transp.png"
+import Westie from "../../assets/westie3.png"
 
 
 function BitcoinTable() {
@@ -65,9 +69,9 @@ function BitcoinTable() {
                 <h1>BTC: {bitcoinData.bitcoin.usd} $</h1>
                 {showBTC && (
         <div className="absolute w-[200px] h-[300px] bg-[#00df9a] flex flex-col items-center justify-center rounded-lg cursor-default">
-            <img src={Ethereum} alt="ethereum" className="h-2/3 my-auto cursor-pointer" />
+            <img clas src={Westie} alt="bitcoin" className={`h-2/3 my-auto cursor-pointer ${showBTC ? 'animate-bounce infinite' : ''}`} />
          
-          <a className="hover:text-yellow-100 my-auto" href="https://coinmarketcap.com/currencies/ethereum/" target="_blank">Odkaz na CMC.com</a>
+          <a className="hover:text-yellow-100 my-auto" href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">Odkaz na CMC.com</a>
         </div>
       )}
                 
@@ -76,7 +80,7 @@ function BitcoinTable() {
       <h1>ETH: {bitcoinData.ethereum.usd} $</h1>
       {showETH && (
         <div className="absolute w-[200px] h-[300px] bg-[#00df9a] flex flex-col items-center justify-center rounded-lg cursor-default">
-            <img src={Ethereum} alt="ethereum" className="h-2/3 my-auto cursor-pointer" />
+            <img src={Westie} alt="ethereum" className={`h-2/3 my-auto cursor-pointer ${showETH ? 'animate-pulse infinite' : ''}`} />
          
           <a className="hover:text-yellow-100 my-auto" href="https://coinmarketcap.com/currencies/ethereum/" target="_blank">Odkaz na CMC.com</a>
         </div>
@@ -86,9 +90,9 @@ function BitcoinTable() {
                 <h1>DOGE: {bitcoinData.dogecoin.usd} $</h1>
                 {showDOGE && (
         <div className="absolute w-[200px] h-[300px] bg-[#00df9a] flex flex-col items-center justify-center rounded-lg cursor-default">
-            <img src={Ethereum} alt="ethereum" className="h-2/3 my-auto cursor-pointer" />
+            <img src={Westie} alt="dogecoin" className={`h-2/3 my-auto cursor-pointer ${showDOGE ? 'animate-spin infinite' : ''}`} />
          
-          <a className="hover:text-yellow-100 my-auto" href="https://coinmarketcap.com/currencies/ethereum/" target="_blank">Odkaz na CMC.com</a>
+          <a className="hover:text-yellow-100 my-auto" href="https://coinmarketcap.com/currencies/dogecoin/" target="_blank">Odkaz na CMC.com</a>
         </div>
       )}
             </div>

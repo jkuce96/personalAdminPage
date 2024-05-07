@@ -7,9 +7,7 @@ import Modal from "./library/Modal";
 function Newsletter() {
     const [email, setEmail] = useState("");
 
-    const openModal = () => {
-        document.getElementById('my_modal_2').showModal()
-    }
+
 
     const handleEmail = async (e) => {
         e.preventDefault();
@@ -25,9 +23,12 @@ function Newsletter() {
             
             
             
+            
            
         } catch (error) {
             console.error("Error v emailu:", error)
+            setEmail("")
+            alert("Není připojena localhost DB")
         }
        
     }
@@ -51,9 +52,11 @@ function Newsletter() {
                     />
                     <button 
                     type="submit"
-                    className="bg-[#00df9a] w-[200px] rounded-md ml-4 font-medium my-6 py-3 text-black hover:text-[#00df9a] hover:bg-gray-700">REGISTROVAT</button>
+                    className="bg-[#00df9a] w-[200px] rounded-md ml-4 font-medium my-6 py-3 text-black hover:bg-[#00c585]">REGISTROVAT</button>
                 </form>
-               <p className="relative">Registrací souhlasíte s <span className="text-violet-400 hover:text-violet-600 cursor-pointer tooltip tooltip-bottom tooltip-secondary " data-tip="Obchodní podmínky naleznete v příloze e-mailu" >obchodními podmínkami</span>.</p>
+               <p className="relative">Registrací souhlasíte s <span className="text-violet-400 hover:text-violet-600 cursor-pointer tooltip tooltip-bottom tooltip-secondary " data-tip="Obchodní podmínky naleznete v příloze e-mailu" >
+                
+                obchodními podmínkami</span>.</p>
              
                <Modal email={email}/>
             </div>

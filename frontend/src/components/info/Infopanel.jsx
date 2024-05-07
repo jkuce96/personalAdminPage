@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from "react"
 import Weathercard from "./Weathercard"
 import Starwarscard from "./Starwarscard"
+import Loader from "./Loader"
 
 const Infopanel = () => {
     const [vybranyCoin, setVybranyCoin] = useState(null)
@@ -21,14 +22,18 @@ const Infopanel = () => {
 
             const roundedCena = Number(randomCoin.item.data.price).toFixed(2);
 
-            setVybranyCoin({
+            setTimeout(() => {
+               setVybranyCoin({
                 name: randomCoin.item.name,
                 symbol: randomCoin.item.symbol,
                 price: roundedCena
 
             })
             setLoading(false);
-            console.log(vybranyCoin);
+            console.log(vybranyCoin); 
+            }, 1500);
+
+            
         } catch (error) {
             console.error("Error při fetchování coinů", error);
             setLoading(false);
@@ -62,6 +67,7 @@ const Infopanel = () => {
                   <p className="py-2 border-b mx-8">fetchuji... </p>    
               </div>
               <button onClick={randomCoinFetch} className="bg-black w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-[#00df9a]">fetchuji...</button>
+              <Loader />
               </div>) : vybranyCoin ? (<div className="w-full bg-gray-100 shadow-xl flex flex-col py-4 md:my-0 my-8 rounded-lg hover:scale-105  duration-300">
                
                <h2 className="text-2xl font-bold text-center py-8">API (random crypto)</h2>
